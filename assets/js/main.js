@@ -29,15 +29,22 @@ function initScrollAnimations() {
       y: 50,
       opacity: 0,
       duration: 0.8,
+      boxShadow: "0 12px 28px rgba(0, 0, 0, 0.15), 0 8px 10px rgba(0, 0, 0, 0.12)", 
       scrollTrigger: {
         trigger: box,
         start: 'top bottom-=100',
-        toggleActions: 'play none none none'
+        toggleActions: 'play none none reverse'
       },
-      delay: i * 0.1
+      delay: i * 0.1,
+      onComplete: () => {
+        // Explicitly set the box shadow after animation
+        gsap.set(box, {
+          boxShadow: "0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08)"
+        });
+      }
     });
   });
-  
+
   // Parallax effect on scroll
   const sections = document.querySelectorAll('section');
   sections.forEach((section) => {

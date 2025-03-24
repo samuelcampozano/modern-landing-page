@@ -23,7 +23,9 @@ html, body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: -2;
+  pointer-events: none; /* Allow clicking through the canvas */
+  opacity: 0.8;
 }
 
 /* Main content */
@@ -81,11 +83,38 @@ html, body {
   border-radius: 12px;
   transition: all 0.3s ease;
   height: 100%;
+  background-color: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 3; 
+  overflow: hidden; 
 }
 
 .box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15), 0 8px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Add a subtle border to enhance the relief effect */
+.box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
+  z-index: 3;
+}
+
+section.section {
+  position: relative;
+  z-index: 1; 
+  background: rgba(250, 250, 250, 0.7);
+  padding: 3rem 1.5rem;
+  backdrop-filter: blur(5px);
 }
 
 /* Footer */
